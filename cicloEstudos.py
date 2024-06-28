@@ -90,12 +90,12 @@ def main(page: ft.Page):
         page.update()
 
     def show_help_dialog(e):
-        show_message_dialog("Prioridades", "As prioridades devem ser definidas considerando os seguintes critérios: "
-                            "Prioridade 1: 'Me considero muito ruim nesta disciplina'. "
+        show_message_dialog("Prioridades", "As prioridades devem ser definidas considerando os seguintes critérios: \n"
+                            "Prioridade 1: 'Me considero muito ruim nesta disciplina'.\n "
                             "Prioridade 2: 'Me considero ruim nesta disciplina'. "
-                            "Prioridade 3: 'Me considero mais ou menos nesta disciplina'. "
-                            "Prioridade 4: 'Me considero bom nesta disciplina'. "
-                            "Prioridade 5: 'Me considero muito bom nesta disciplina'.")
+                            "Prioridade 3: 'Me considero mais ou menos nesta disciplina'.\n "
+                            "Prioridade 4: 'Me considero bom nesta disciplina'. \n"
+                            "Prioridade 5: 'Me considero muito bom nesta disciplina'.\n")
 
     nome_input = ft.TextField(label="Nome da Disciplina")
     prioridade_input = ft.TextField(
