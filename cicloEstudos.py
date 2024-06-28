@@ -1,11 +1,13 @@
 import flet as ft
 from fpdf import FPDF
+import math
 
 
 def main(page: ft.Page):
     page.title = "Ciclo de Estudos"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.scroll = "always"
+    resultados = ft.Text()
 
     disciplinas = []
     multiplicadores = {
@@ -35,6 +37,7 @@ def main(page: ft.Page):
 
         for d in disciplinas:
             d["horas_semanais"] = coeficiente * d["multiplicador"]
+            d["horas_semanais"] = math.ceil(d["horas_semanais"])
 
         mostrar_ciclo(disciplinas)
 
@@ -61,8 +64,8 @@ def main(page: ft.Page):
             rows.append(ft.DataRow(
                 cells=[
                     ft.DataCell(ft.Text(disciplina["nome"])),
-                    ft.DataCell(ft.Text(str(disciplina["prioridade"]))),
                     ft.DataCell(ft.Text(str(disciplina["multiplicador"]))),
+                    ft.DataCell(ft.Text(str(disciplina["prioridade"]))),
                     ft.DataCell(ft.Text(str(horas_semanais)))
                 ]
             ))
@@ -124,8 +127,6 @@ def main(page: ft.Page):
         ],
         rows=[],
     )
-
-    resultados = ft.Text()
 
     page.add(
         ft.Container(
