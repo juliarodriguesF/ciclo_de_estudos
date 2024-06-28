@@ -5,6 +5,7 @@ from fpdf import FPDF
 def main(page: ft.Page):
     page.title = "Ciclo de Estudos"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    page.scroll = "always"
 
     disciplinas = []
     multiplicadores = {
@@ -127,19 +128,24 @@ def main(page: ft.Page):
     resultados = ft.Text()
 
     page.add(
-        ft.Row([ft.Text("Ciclo de Estudos"), help_button],
-               alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
-        nome_input,
-        prioridade_input,
-        adicionar_button,
-        ft.Divider(),
-        horas_diarias_input,
-        dias_semana_input,
-        calcular_button,
-        tabela,
-        ft.Divider(),
-        limpar_button,
-        resultados
+        ft.Container(
+            content=ft.Column([
+                ft.Row([ft.Text("Ciclo de Estudos"), help_button],
+                       alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                nome_input,
+                prioridade_input,
+                adicionar_button,
+                ft.Divider(),
+                horas_diarias_input,
+                dias_semana_input,
+                calcular_button,
+                tabela,
+                ft.Divider(),
+                ft.Text("Seu ciclo: "),
+                limpar_button,
+                resultados,
+            ]),
+        )
     )
 
 
